@@ -3,7 +3,7 @@ import openai
 
 # ✅ DeepSeek 新版 API 地址和密钥
 openai.api_base = "https://api.deepseek.com"
-openai.api_key = st.secrets.get("DEEPSEEK_API_KEY")
+openai.api_key = st.secrets["DEEPSEEK_API_KEY"]
 
 def build_prompt(subject, topic, qtype):
     return f"""
