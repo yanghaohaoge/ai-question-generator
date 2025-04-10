@@ -1,9 +1,9 @@
 import streamlit as st
 import openai
 
-# ======= 设置 DeepSeek API =======
-openai.api_base = "https://api.deepseek.com/v1"
-openai.api_key = st.secrets.get("DEEPSEEK_API_KEY", "your-deepseek-api-key")
+# ✅ DeepSeek 新版 API 地址和密钥
+openai.api_base = "https://api.deepseek.com"
+openai.api_key = st.secrets.get("DEEPSEEK_API_KEY")
 
 def build_prompt(subject, topic, qtype):
     return f"""
@@ -17,7 +17,7 @@ def build_prompt(subject, topic, qtype):
 def generate_question(prompt):
     try:
         response = openai.ChatCompletion.create(
-            model="deepseek-chat",
+            model="deepseek-chat",  # ✅ 使用最新模型名
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7
         )
